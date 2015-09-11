@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rewrite Underscore Methods</title>
+	<script>
+		var _ = {
+			map: function(arr, callback)
+			{
+				for(key in arr)
+				{
+					arr[key] = callback(arr[key]);
+				}
+				return arr;
+			},
+			first: function(arr)
+			{
+				var result = [];
+				for(val in arr)
+				{
+					if(arr[val].constructor == Array)
+					{
+						result.push(arr[val][0]);
+					}
+					else
+					{
+						return arr[0]
+					}
+				}
+				return result;					
+
+			},
+			reduce: function(arr, callback, num)
+			{
+				if(typeof num == "undefined")
+				{
+					num = 0;
+				}
+				else
+				{
+					num = num;
+				}
+				for(key in arr)
+				{
+					num = callback(arr[key], num);
+				}
+				return num;
+			},
+			find: function(arr, callback)
+			{
+				for(key in arr)
+				{
+					if(callback(arr[key]))
+					{
+						return arr[key];
+					}
+				}
+
+			},
+			filter: function(arr, callback)
+			{
+				var result = [];
+				for(key in arr)
+				{
+					if(callback(arr[key]))
+					{
+						result.push(arr[key]);
+					}
+				}
+				return result;
+			},
+			reject: function(arr, callback)
+			{
+				var result = [];
+				for(key in arr)
+				{
+					if(!callback(arr[key]))
+					{
+						result.push(arr[key])
+					}
+				}
+				return result;
+			}
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
